@@ -1389,7 +1389,7 @@ impl<const RFC: usize, const EFC: usize> crate::Encoder<'_> for Encoder<RFC, EFC
             0
         };
 
-        let preceding_bits = self.output.len() + self.number_optional_default_fields;
+        let preceding_bits = self.output.len() + self.number_optional_default_fields - self.preamble_pre_reserved;
         choice_encoder.parent_output_length = Some(preceding_bits + choice_bits_len);
         let _tag = (encode_fn)(&mut choice_encoder)?;
 
