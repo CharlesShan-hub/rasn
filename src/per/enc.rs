@@ -1305,7 +1305,7 @@ impl<const RFC: usize, const EFC: usize> crate::Encoder<'_> for Encoder<RFC, EFC
                 extension_bitfield: (0, [false; EL]),
                 is_extension_sequence: false,
                 extension_fields: [(); EL].map(|_| None),
-                parent_output_length: None,
+                parent_output_length: self.parent_output_length,
             };
             (encoder_scope)(&mut child)?;
             // Move the buffers back; reclaim any grown work allocation from the child.
